@@ -10834,6 +10834,11 @@ html {
   padding-top: 7.5rem;
   padding-bottom: 7.5rem;
 }
+.content-sectioncontact {
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
+  background-color: rebeccapurple;
+}
 .about {
   padding-top: 7.5rem;
   padding-bottom: 7.5rem;
@@ -11102,7 +11107,7 @@ footer.footer .social-link:hover {
   .portfolio-item img {
     width: 100%; /* Asegura que la imagen se ajuste al contenedor */
     height: 300px; /* Define una altura uniforme */
-    object-fit: fill;
+    object-fit: cover;
     transition: -webkit-clip-path 0.25s ease-out;
     transition: clip-path 0.25s ease-out;
     transition: clip-path 0.25s ease-out, -webkit-clip-path 0.25s ease-out;
@@ -11118,6 +11123,46 @@ footer.footer .social-link:hover {
     -webkit-clip-path: inset(2rem);
             clip-path: inset(2rem);
   }
+  .first-image {
+    object-position: top center; /* Mueve el enfoque hacia la parte superior */
+}
+  .last-image {
+    object-position: top center; /* También para la última imagen */
+}
+}
+
+#contact {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+#contact .form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#contact .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#contact .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+#contact a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#contact a:hover {
+    text-decoration: underline;
 }
 
 .service-icon {
