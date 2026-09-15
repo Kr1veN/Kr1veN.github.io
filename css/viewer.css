@@ -1,0 +1,204 @@
+/* ===================================================================
+   Render Viewer — componente de comparación de capas 3D
+   Paleta: viewport técnico (grafito + ámbar, con nod a Blender)
+   =================================================================== */
+
+:root {
+  --viewport-bg: #1b1b1e;
+  --viewport-grid: #29292e;
+  --viewport-panel: #232327;
+  --viewport-border: #38383e;
+  --viewport-text: #e7e5df;
+  --viewport-text-dim: #8d8b86;
+  --accent-amber: #ff8a3d;
+  --accent-wire: #4dd88a;
+  --font-ui: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  --font-display: "Sora", "Archivo", sans-serif;
+}
+
+.render-viewer {
+  --cols: 1;
+  background: var(--viewport-panel);
+  border: 1px solid var(--viewport-border);
+  border-radius: 6px;
+  overflow: hidden;
+  font-family: var(--font-ui);
+  color: var(--viewport-text);
+  max-width: 900px;
+  margin: 2.5rem auto;
+}
+
+/* Barra HUD superior, como la cabecera de un viewport 3D */
+.render-viewer__hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--viewport-panel);
+  border-bottom: 1px solid var(--viewport-border);
+  flex-wrap: wrap;
+}
+
+.render-viewer__title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--viewport-text);
+  letter-spacing: 0.01em;
+}
+
+.render-viewer__modes {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--viewport-bg);
+  border: 1px solid var(--viewport-border);
+  border-radius: 4px;
+  padding: 3px;
+}
+
+.render-viewer__mode-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--viewport-text-dim);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+
+.render-viewer__mode-btn:hover {
+  color: var(--viewport-text);
+}
+
+.render-viewer__mode-btn[aria-pressed="true"] {
+  background: var(--viewport-panel);
+  color: var(--accent-amber);
+  box-shadow: inset 0 0 0 1px var(--viewport-border);
+}
+
+/* Lienzo donde viven las capas */
+.render-viewer__canvas {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-image:
+    linear-gradient(var(--viewport-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--viewport-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: var(--viewport-bg);
+  overflow: hidden;
+  cursor: default;
+}
+
+.render-viewer__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.render-viewer__layer.is-active {
+  opacity: 1;
+}
+
+/* Modo comparación: slider deslizante entre dos capas */
+.render-viewer__canvas[data-compare="true"] .render-viewer__layer.is-front {
+  clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0);
+}
+
+.render-viewer__divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--split, 50%);
+  width: 2px;
+  background: var(--accent-amber);
+  transform: translateX(-1px);
+  pointer-events: none;
+  display: none;
+}
+
+.render-viewer__canvas[data-compare="true"] .render-viewer__divider {
+  display: block;
+}
+
+.render-viewer__handle {
+  position: absolute;
+  top: 50%;
+  left: var(--split, 50%);
+  transform: translate(-50%, -50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent-amber);
+  border: 2px solid var(--viewport-bg);
+  cursor: ew-resize;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: var(--viewport-bg);
+  font-weight: 700;
+  touch-action: none;
+}
+
+.render-viewer__canvas[data-compare="true"] .render-viewer__handle {
+  display: flex;
+}
+
+.render-viewer__handle::before,
+.render-viewer__handle::after {
+  content: "";
+}
+
+/* Slider de opacidad (modo mezcla) */
+.render-viewer__blend {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  border-top: 1px solid var(--viewport-border);
+  font-size: 0.72rem;
+  color: var(--viewport-text-dim);
+}
+
+.render-viewer[data-blend-active="true"] .render-viewer__blend {
+  display: flex;
+}
+
+.render-viewer__blend input[type="range"] {
+  flex: 1;
+  accent-color: var(--accent-amber);
+}
+
+.render-viewer__layer-label {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 0.7rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  color: var(--viewport-text-dim);
+  background: rgba(27, 27, 30, 0.7);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+@media (max-width: 560px) {
+  .render-viewer__hud { flex-direction: column; align-items: flex-start; }
+  .render-viewer__title { font-size: 0.85rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .render-viewer__layer { transition: none; }
+}
