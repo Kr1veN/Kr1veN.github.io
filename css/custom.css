@@ -1,0 +1,220 @@
+/* ===================================================================
+   custom.css — Identidad visual del portfolio de Daniel Borrego Cruz
+   Carga DESPUÉS de css/styles.css para sobrescribir el theme genérico.
+
+   Sistema de diseño:
+   - Color: viewport técnico oscuro + ámbar de acento (nace del propio
+     visor de renders — ver assets/css/viewer.css)
+   - Tipografía: Fraunces (serif con carácter escultórico, para
+     titulares) + Inter (sans neutra, para texto de lectura) + JetBrains
+     Mono (solo para etiquetas técnicas puntuales)
+   - Layout: asimétrico en la sección "sobre mí", showroom de trabajos
+     a ancho completo para que los renders respiren
+   =================================================================== */
+
+:root {
+  --bg: #16161a;
+  --bg-alt: #1c1c21;
+  --panel: #1e1e23;
+  --border: #34343b;
+  --ink: #ece8df;
+  --ink-dim: #9a968d;
+  --accent: #ff8a3d;
+  --accent-soft: rgba(255, 138, 61, 0.14);
+  --wire: #5be08a;
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Inter", "Source Sans Pro", sans-serif;
+  --font-ui: "JetBrains Mono", ui-monospace, monospace;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+/* --- Navegación lateral --- */
+#sidebar-wrapper,
+#sidebar-wrapper .sidebar-nav {
+  background: var(--panel) !important;
+}
+
+.sidebar-nav-item a,
+.sidebar-brand a {
+  font-family: var(--font-ui) !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.02em;
+  color: var(--ink-dim) !important;
+}
+
+.sidebar-nav-item a:hover,
+.sidebar-brand a:hover {
+  color: var(--accent) !important;
+}
+
+.menu-toggle {
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+}
+
+/* --- Header / hero --- */
+.masthead {
+  background: radial-gradient(ellipse at top, var(--bg-alt), var(--bg) 70%);
+  min-height: 92vh;
+}
+
+.masthead h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.masthead h3 {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 1rem;
+  font-style: normal;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.masthead .btn-primary {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  padding: 0.7rem 1.8rem;
+  border-radius: 2px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.masthead .btn-primary:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* --- Sección "Sobre mí": layout asimétrico texto + foto --- */
+#about {
+  background: var(--bg) !important;
+  padding: 6rem 0;
+}
+
+#about h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--ink);
+  text-align: left;
+}
+
+#about .lead {
+  font-family: var(--font-body);
+  color: var(--ink-dim);
+  text-align: left;
+  font-size: 1.1rem;
+  max-width: 46ch;
+}
+
+#about .col-lg-10 { text-align: left !important; }
+
+/* --- Callout / foto de perfil --- */
+.callout {
+  background: var(--bg-alt) !important;
+  padding: 5rem 0;
+}
+
+.callout h2 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-size: 1.6rem;
+}
+
+.callout img {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  filter: grayscale(15%);
+}
+
+/* --- Portfolio --- */
+#portfolio {
+  background: var(--bg) !important;
+  padding: 6rem 0;
+}
+
+#portfolio .content-section-heading h3 {
+  font-family: var(--font-ui);
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+#portfolio .content-section-heading h2 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+#portfolio p.text-center {
+  font-family: var(--font-body);
+  color: var(--ink-dim);
+  font-size: 0.92rem;
+  margin-top: 0.6rem;
+}
+
+/* --- Contacto --- */
+.content-sectioncontact {
+  background: var(--bg-alt) !important;
+  padding: 6rem 0;
+}
+
+.content-sectioncontact h3 {
+  font-family: var(--font-ui);
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+.content-sectioncontact h2 {
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+
+.content-sectioncontact a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.content-sectioncontact a:hover {
+  border-color: var(--accent);
+}
+
+/* --- Footer --- */
+.footer {
+  background: var(--bg) !important;
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+}
+
+.footer .social-link {
+  background: var(--panel) !important;
+  border: 1px solid var(--border);
+}
+
+.footer .social-link:hover {
+  border-color: var(--accent);
+}
+
+.footer .text-muted {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--ink-dim) !important;
+}
+
+/* --- Scroll to top --- */
+.scroll-to-top {
+  background: var(--accent) !important;
+}

@@ -13,10 +13,13 @@
     <!-- Simple line icons-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/viewer.css">
+    <!-- Rediseño / identidad visual propia (debe ir DESPUÉS de styles.css) -->
+    <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body id="page-top">
     <!-- Navigation-->
@@ -113,11 +116,11 @@
                         <div class="render-viewer__hud">
                             <span class="render-viewer__title">Personaje vikingo</span>
                             <div class="render-viewer__modes">
-                                <button class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
-                                <button class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
-                                <button class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
-                                <button class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
-                                <button class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
                             </div>
                         </div>
                         <div class="render-viewer__canvas" data-compare="false">
@@ -141,11 +144,11 @@
                         <div class="render-viewer__hud">
                             <span class="render-viewer__title">Criatura</span>
                             <div class="render-viewer__modes">
-                                <button class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
-                                <button class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
-                                <button class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
-                                <button class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
-                                <button class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
                             </div>
                         </div>
                         <div class="render-viewer__canvas" data-compare="false">
@@ -169,17 +172,17 @@
                         <div class="render-viewer__hud">
                             <span class="render-viewer__title">Busto</span>
                             <div class="render-viewer__modes">
-                                <button class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
-                                <button class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
-                                <button class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
-                                <button class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
-                                <button class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
                             </div>
                         </div>
                         <div class="render-viewer__canvas" data-compare="false">
-                            <img class="render-viewer__layer" data-layer="standard" src="assets/img/Habitacion_Modelado.jpg" alt="Habitación - material estándar">
-                            <img class="render-viewer__layer" data-layer="wireframe" src="assets/img/Habitación_Wireframe.jpg" alt="Habitación - wireframe">
-                            <img class="render-viewer__layer" data-layer="textured" src="assets/img/Habitacion_Texturizada.jpg" alt="Habitación - texturizado">
+                            <img class="render-viewer__layer" data-layer="standard" src="assets/img/busto_standard.png" alt="Busto - material estándar">
+                            <img class="render-viewer__layer" data-layer="wireframe" src="assets/img/busto_wireframe.png" alt="Busto - wireframe">
+                            <img class="render-viewer__layer" data-layer="textured" src="assets/img/busto_textured.png" alt="Busto - texturizado">
                             <div class="render-viewer__divider"></div>
                             <div class="render-viewer__handle" aria-hidden="true">⇔</div>
                         </div>
@@ -197,11 +200,11 @@
                         <div class="render-viewer__hud">
                             <span class="render-viewer__title">Monje</span>
                             <div class="render-viewer__modes">
-                                <button class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
-                                <button class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
-                                <button class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
-                                <button class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
-                                <button class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
                             </div>
                         </div>
                         <div class="render-viewer__canvas" data-compare="false">
