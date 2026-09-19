@@ -75,34 +75,34 @@ const PROJECTS = {
   // por un id corto sin espacios, y las rutas por tus archivos reales.
   // Puedes copiar este bloque tantas veces como proyectos multi-plano
   // tengas.
-  "proyecto-4-planos": {
-    title: "Nombre del proyecto",
+  "habitacion-cartoon": {
+    title: "Subway Shelter",
     description: "Descripción breve del trabajo",
-    thumb: "assets/img/proyecto-4-planos/plano1_textured.png",
+    thumb: "assets/img/Habitacion/General_Texturizado.jpg",
     planes: [
       {
-        label: "Frontal",
-        standard: "assets/img/proyecto-4-planos/plano1_standard.png",
-        wireframe: "assets/img/proyecto-4-planos/plano1_wireframe.png",
-        textured: "assets/img/proyecto-4-planos/plano1_textured.png",
+        label: "General",
+            standard: "assets/img/Habitacion/General_Modelado.jpg",
+            wireframe: "assets/img/Habitacion/General_Wireframe.jpg",
+            textured: "assets/img/Habitacion/General_Texturizado.jpg",
       },
       {
-        label: "Perfil",
-        standard: "assets/img/proyecto-4-planos/plano2_standard.png",
-        wireframe: "assets/img/proyecto-4-planos/plano2_wireframe.png",
-        textured: "assets/img/proyecto-4-planos/plano2_textured.png",
+        label: "Bedroom",
+          standard: "assets/img/Habitacion/Cuarto_Modelado.jpg",
+          wireframe: "assets/img/Habitacion/Cuarto_Wireframe.jpg",
+          textured: "assets/img/Habitacion/Cuarto_Texturizado.jpg",
       },
       {
-        label: "Espalda",
-        standard: "assets/img/proyecto-4-planos/plano3_standard.png",
-        wireframe: "assets/img/proyecto-4-planos/plano3_wireframe.png",
-        textured: "assets/img/proyecto-4-planos/plano3_textured.png",
+        label: "Tech-Zone",
+          standard: "assets/img/Habitacion/Ordenador_Modelado.jpg",
+          wireframe: "assets/img/Habitacion/Ordenador_Wireframe.jpg",
+          textured: "assets/img/Habitacion/Ordenador_Texturizado.jpg",
       },
       {
-        label: "Detalle",
-        standard: "assets/img/proyecto-4-planos/plano4_standard.png",
-        wireframe: "assets/img/proyecto-4-planos/plano4_wireframe.png",
-        textured: "assets/img/proyecto-4-planos/plano4_textured.png",
+        label: "Workshop",
+          standard: "assets/img/Habitacion/Taller_Modelado.jpg",
+          wireframe: "assets/img/Habitacion/Taller_Wireframe.jpg",
+          textured: "assets/img/Habitacion/Taller_Texturizado.jpg",
       },
     ],
   },
