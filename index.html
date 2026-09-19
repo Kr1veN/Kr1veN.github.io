@@ -21,262 +21,238 @@
     <!-- Rediseño / identidad visual propia (debe ir DESPUÉS de styles.css) -->
     <link rel="stylesheet" href="assets/css/custom.css">
 </head>
-<body id="page-top">
-    <!-- Navigation-->
-    <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
-    <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand"><a href="#page-top">Mi portfolio</a></li>
-            <li class="sidebar-nav-item"><a href="#page-top">Inicio</a></li>
-            <li class="sidebar-nav-item"><a href="#about">Sobre</a></li>
-            <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-            <li class="sidebar-nav-item"><a href="#contact">Contacto</a></li>
-        </ul>
-    </nav>
-    <!-- Header-->
-    <header class="masthead d-flex align-items-center">
-        <div class="container px-4 px-lg-5 text-center">
-            <h1 class="mb-1">Daniel Borrego Cruz</h1>
-            <h3 class="mb-5"><em>Mis trabajos como artista 3D</em></h3>
-            <a class="btn btn-primary btn-xl" href="#about">Ver más</a>
-        </div>
-    </header>
-    <!-- About-->
-    <section class="content-section bg-light" id="about">
-        <div class="container px-4 px-lg-5 text-center">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-10">
-                    <h2>Artista 3D en busca de nuevos retos</h2>
-                    <p class="lead mb-5">
-                        Mi trabajo se centra en el modelado y la animación 3D en Blender
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Callout-->
-    <section class="callout">
-        <div class="container px-4 px-lg-5 text-center">
-            <h2 class="mx-auto mb-5">
-                Este soy yo
-            </h2>
-            <img class="img-fluid" src="assets/img/perfil.jpg" alt="..." width="450" height="450" />
-        </div>
-    </section>
-    <!-- Services-->
-    <!-- <section class="content-section bg-primary text-white text-center" id="services">
-         <div class="container px-4 px-lg-5">
-             <div class="content-section-heading">
-                 <h3 class="text-secondary mb-0">Servicios</h3>
-                 <h2 class="mb-5">Que puedo ofrecer</h2>
-             </div>
-             <div class="row gx-4 gx-lg-5">
-                 <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                     <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
-                     <h4><strong>Motivado</strong></h4>
-                     <p class="text-faded mb-0">Vengo a aprender todo lo que haga falta</p>
-                 </div>
-                 <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                     <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
-                     <h4><strong>Diseños</strong></h4>
-                     <p class="text-faded mb-0">Ofrezco mis capacidades de artista 3D para diferentes trabajos y ámbitos</p>
-                 </div>
-                 <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                     <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
-                     <h4><strong>Positivo</strong></h4>
-                     <p class="text-faded mb-0">
-                         De cualquier lado puede sacarse algo de lo que aprender</p>
-                 </div>
-             </div>
-         </div>
-     </section>
-
-     <!-- Portfolio-->
-    <section class="content-section" id="portfolio">
-        <div class="container px-4 px-lg-5">
-            <div class="content-section-heading text-center">
-                <h3 class="text-secondary mb-0">Portfolio</h3>
-                <h2 class="mb-5">Algunos trabajos</h2>
-            </div>
-            <div class="row gx-4 gx-lg-5">
-                <!--
-                    Cada trabajo es ahora un .render-viewer en vez de una <img> suelta.
-                    IMPORTANTE: para que el slider "Comparar" y el modo "Mezclar" tengan
-                    sentido, las 2-3 imágenes de un mismo trabajo deben venir del MISMO
-                    encuadre/cámara en Blender (renderiza standard, wireframe y textura
-                    sin mover la cámara entre pasadas).
-
-                    Si de momento solo tienes UNA imagen por trabajo (como ahora), deja
-                    solo esa capa y quita el botón de modo que no tengas listo — el
-                    componente funciona igual con 1 sola capa, simplemente no aparecerán
-                    los botones "Comparar" ni "Mezclar" hasta que añadas una segunda.
-                -->
-                <div class="col-lg-6 mb-4">
-                    <div class="render-viewer">
-                        <div class="render-viewer__hud">
-                            <span class="render-viewer__title">Personaje vikingo</span>
-                            <div class="render-viewer__modes">
-                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
-                            </div>
-                        </div>
-                        <div class="render-viewer__canvas" data-compare="false">
-                            <img class="render-viewer__layer" data-layer="standard" src="assets/img/Habitacion_Modelado.jpg" alt="Guerrera vikinga - material estándar">
-                            <img class="render-viewer__layer" data-layer="wireframe" src="assets/img/Habitacion_Wireframe.jpg" alt="Guerrera vikinga - wireframe">
-                            <img class="render-viewer__layer" data-layer="textured" src="assets/img/Habitacion_Texturizada.jpg" alt="Guerrera vikinga - texturizado">
-                            <div class="render-viewer__divider"></div>
-                            <div class="render-viewer__handle" aria-hidden="true">⇔</div>
-                        </div>
-                        <div class="render-viewer__blend">
-                            <span>clay</span>
-                            <input type="range" min="0" max="100" value="50" aria-label="Mezcla entre capas">
-                            <span>textura</span>
-                        </div>
-                    </div>
-                    <p class="text-center mb-0">Diseño de una guerrera vikinga</p>
-                </div>
-
-                <div class="col-lg-6 mb-4">
-                    <div class="render-viewer">
-                        <div class="render-viewer__hud">
-                            <span class="render-viewer__title">Criatura</span>
-                            <div class="render-viewer__modes">
-                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
-                            </div>
-                        </div>
-                        <div class="render-viewer__canvas" data-compare="false">
-                            <img class="render-viewer__layer" data-layer="standard" src="assets/img/Enemigo_standard.png" alt="Criatura - material estándar">
-                            <img class="render-viewer__layer" data-layer="wireframe" src="assets/img/Enemigo_wireframe.png" alt="Criatura - wireframe">
-                            <img class="render-viewer__layer" data-layer="textured" src="assets/img/Enemigo_textured.png" alt="Criatura - texturizado">
-                            <div class="render-viewer__divider"></div>
-                            <div class="render-viewer__handle" aria-hidden="true">⇔</div>
-                        </div>
-                        <div class="render-viewer__blend">
-                            <span>clay</span>
-                            <input type="range" min="0" max="100" value="50" aria-label="Mezcla entre capas">
-                            <span>textura</span>
-                        </div>
-                    </div>
-                    <p class="text-center mb-0">Monstruo de fantasía</p>
-                </div>
-
-                <div class="col-lg-6 mb-4">
-                    <div class="render-viewer">
-                        <div class="render-viewer__hud">
-                            <span class="render-viewer__title">Busto</span>
-                            <div class="render-viewer__modes">
-                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
-                            </div>
-                        </div>
-                        <div class="render-viewer__canvas" data-compare="false">
-                            <img class="render-viewer__layer" data-layer="standard" src="assets/img/busto_standard.png" alt="Busto - material estándar">
-                            <img class="render-viewer__layer" data-layer="wireframe" src="assets/img/busto_wireframe.png" alt="Busto - wireframe">
-                            <img class="render-viewer__layer" data-layer="textured" src="assets/img/busto_textured.png" alt="Busto - texturizado">
-                            <div class="render-viewer__divider"></div>
-                            <div class="render-viewer__handle" aria-hidden="true">⇔</div>
-                        </div>
-                        <div class="render-viewer__blend">
-                            <span>clay</span>
-                            <input type="range" min="0" max="100" value="50" aria-label="Mezcla entre capas">
-                            <span>textura</span>
-                        </div>
-                    </div>
-                    <p class="text-center mb-0">Busto de un señor mayor para práctica de anatomía</p>
-                </div>
-
-                <div class="col-lg-6 mb-4">
-                    <div class="render-viewer">
-                        <div class="render-viewer__hud">
-                            <span class="render-viewer__title">Monje</span>
-                            <div class="render-viewer__modes">
-                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
-                            </div>
-                        </div>
-                        <div class="render-viewer__canvas" data-compare="false">
-                            <img class="render-viewer__layer" data-layer="standard" src="assets/img/KahlFrente_standard.png" alt="Monje - material estándar">
-                            <img class="render-viewer__layer" data-layer="wireframe" src="assets/img/KahlFrente_wireframe.png" alt="Monje - wireframe">
-                            <img class="render-viewer__layer" data-layer="textured" src="assets/img/KahlFrente_textured.png" alt="Monje - texturizado">
-                            <div class="render-viewer__divider"></div>
-                            <div class="render-viewer__handle" aria-hidden="true">⇔</div>
-                        </div>
-                        <div class="render-viewer__blend">
-                            <span>clay</span>
-                            <input type="range" min="0" max="100" value="50" aria-label="Mezcla entre capas">
-                            <span>textura</span>
-                        </div>
-                    </div>
-                    <p class="text-center mb-0">Personaje fantasía</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Call to Action-->
-    <!-- <section class="content-section bg-primary text-white">
-        <div class="container px-4 px-lg-5 text-center">
-            <h2 class="mb-4">The buttons below are impossible to resist...</h2>
-            <a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
-            <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
-        </div>
-    </section>
-    <!-- Map-->
-    <!-- Contacto -->
-    <section class="content-sectioncontact" id="contact">
-        <div class="container px-4 px-lg-5 text-center">
-            <div class="content-section-heading">
-                <h3 class="text-secondary mb-0">Contacto</h3>
-                <h2 class="mb-5">¡Hablemos!</h2>
-            </div>
-            <p class="mb-4">Puedes contactarme por correo electrónico o visitar mi portafolio en ArtStation:</p>
-            <div>
-                <!-- Correo -->
-                <p>
-                    <strong>Email:</strong>
-                    <a href="mailto:tu_correo@gmail.com">animaciondanibc@gmail.com</a>
-                </p>
-                <!-- Enlace a ArtStation -->
-                <p>
-                    <strong>ArtStation:</strong>
-                    <a href="https://www.artstation.com/kr1ven" target="_blank">Mi Portafolio</a>
-                </p>
-            </div>
-        </div>
-    </section>
-    <!-- Footer-->
-    <footer class="footer text-center">
-        <div class="container px-4 px-lg-5">
-            <ul class="list-inline mb-5">
-
-                <li class="list-inline-item">
-                    <a class="social-link rounded-circle text-white mr-3" href="https://www.instagram.com/kr1ven_design/"><i class="icon-social-instagram"></i></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="social-link rounded-circle text-white" href="https://www.linkedin.com/in/daniel-borrego-cruz24/"><i class="icon-social-linkedin"></i></a>
-                </li>
+    <body id="page-top">
+        <!-- Navigation-->
+        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="#page-top">Mi portfolio</a></li>
+                <li class="sidebar-nav-item"><a href="#page-top">Inicio</a></li>
+                <li class="sidebar-nav-item"><a href="#about">Sobre</a></li>
+                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
+                <li class="sidebar-nav-item"><a href="#contact">Contacto</a></li>
             </ul>
-            <p class="text-muted small mb-0">Gracias por su atención</p>
+        </nav>
+        <!-- Header-->
+        <header class="masthead d-flex align-items-center">
+            <div class="container px-4 px-lg-5 text-center">
+                <h1 class="mb-1">Daniel Borrego Cruz</h1>
+                <h3 class="mb-5"><em>Mis trabajos como artista 3D</em></h3>
+                <a class="btn btn-primary btn-xl" href="#about">Ver más</a>
+            </div>
+        </header>
+        <!-- About-->
+        <section class="content-section bg-light" id="about">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+                        <h2>Artista 3D en busca de nuevos retos</h2>
+                        <p class="lead mb-5">
+                            Mi trabajo se centra en el modelado y la animación 3D en Blender
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Callout-->
+        <section class="callout">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mx-auto mb-5">
+                    Este soy yo                    
+                </h2>
+                <img class="img-fluid" src="assets/img/perfil.jpg" alt="..." width="450" height="450"/>
+             </div>
+        </section>
+        <!-- Services-->
+       <!-- <section class="content-section bg-primary text-white text-center" id="services">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading">
+                    <h3 class="text-secondary mb-0">Servicios</h3>
+                    <h2 class="mb-5">Que puedo ofrecer</h2>
+                </div>
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-screen-smartphone"></i></span>
+                        <h4><strong>Motivado</strong></h4>
+                        <p class="text-faded mb-0">Vengo a aprender todo lo que haga falta</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-pencil"></i></span>
+                        <h4><strong>Diseños</strong></h4>
+                        <p class="text-faded mb-0">Ofrezco mis capacidades de artista 3D para diferentes trabajos y ámbitos</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="icon-like"></i></span>
+                        <h4><strong>Positivo</strong></h4>
+                        <p class="text-faded mb-0">
+                            De cualquier lado puede sacarse algo de lo que aprender</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio-->
+        <section class="content-section" id="portfolio">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading text-center">
+                    <h3 class="text-secondary mb-0">Portfolio</h3>
+                    <h2 class="mb-5">Algunos trabajos</h2>
+                </div>
+
+                <!--
+                    Cada trabajo es una TARJETA. Al hacer click se abre en un
+                    modal ampliado. Si un trabajo tiene varios planos/ángulos
+                    de cámara, dentro del modal aparecen pestañas para
+                    cambiar entre ellos (ver PROJECTS en assets/js/viewer.js).
+
+                    data-project debe coincidir EXACTAMENTE con la clave del
+                    objeto PROJECTS en viewer.js.
+                -->
+                <div class="project-grid">
+                    <button type="button" class="project-card" data-project="guerrera-vikinga">
+                        <img class="project-card__thumb" src="assets/img/seren_textured.png" alt="Personaje vikingo">
+                        <div class="project-card__overlay">
+                            <div class="project-card__title">Personaje vikingo</div>
+                            <div class="project-card__meta">Diseño de una guerrera vikinga</div>
+                        </div>
+                    </button>
+
+                    <button type="button" class="project-card" data-project="criatura">
+                        <img class="project-card__thumb" src="assets/img/Enemigo_textured.png" alt="Criatura">
+                        <div class="project-card__overlay">
+                            <div class="project-card__title">Criatura</div>
+                            <div class="project-card__meta">Monstruo de fantasía</div>
+                        </div>
+                    </button>
+
+                    <button type="button" class="project-card" data-project="busto">
+                        <img class="project-card__thumb" src="assets/img/busto_textured.png" alt="Busto">
+                        <div class="project-card__overlay">
+                            <div class="project-card__title">Busto</div>
+                            <div class="project-card__meta">Práctica de anatomía</div>
+                        </div>
+                    </button>
+
+                    <button type="button" class="project-card" data-project="monje">
+                        <img class="project-card__thumb" src="assets/img/KahlFrente_textured.png" alt="Monje">
+                        <div class="project-card__overlay">
+                            <div class="project-card__title">Monje</div>
+                            <div class="project-card__meta">Personaje fantasía</div>
+                        </div>
+                    </button>
+
+                    <!--
+                        Tarjeta de EJEMPLO para el proyecto de 4 planos.
+                        Cambia data-project, el título, la meta y el thumb por
+                        los reales, y rellena PROJECTS["proyecto-4-planos"]
+                        en assets/js/viewer.js con tus rutas de imagen.
+                    -->
+                    <button type="button" class="project-card" data-project="proyecto-4-planos">
+                        <img class="project-card__thumb" src="assets/img/proyecto-4-planos/plano1_textured.png" alt="Nombre del proyecto">
+                        <div class="project-card__overlay">
+                            <div class="project-card__title">Nombre del proyecto</div>
+                            <div class="project-card__meta">4 planos · standard / wireframe / texturizado</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal ampliado: se rellena por JS al hacer click en una tarjeta -->
+        <div class="project-modal">
+            <div class="project-modal__panel">
+                <div class="project-modal__header">
+                    <div>
+                        <div class="project-modal__title"></div>
+                        <div class="project-modal__desc"></div>
+                    </div>
+                    <button type="button" class="project-modal__close" aria-label="Cerrar">✕</button>
+                </div>
+
+                <div class="project-modal__planes"></div>
+
+                <div class="project-modal__viewer-slot">
+                    <div class="render-viewer">
+                        <div class="render-viewer__hud">
+                            <span class="render-viewer__title"></span>
+                            <div class="render-viewer__modes">
+                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
+                            </div>
+                        </div>
+                        <div class="render-viewer__canvas" data-compare="false">
+                            <img class="render-viewer__layer" data-layer="standard" alt="Render estándar">
+                            <img class="render-viewer__layer" data-layer="wireframe" alt="Render wireframe">
+                            <img class="render-viewer__layer" data-layer="textured" alt="Render texturizado">
+                            <div class="render-viewer__divider"></div>
+                            <div class="render-viewer__handle" aria-hidden="true">⇔</div>
+                        </div>
+                        <div class="render-viewer__blend">
+                            <span>clay</span>
+                            <input type="range" min="0" max="100" value="50" aria-label="Mezcla entre capas">
+                            <span>textura</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-    <script src="assets/js/viewer.js"></script>
-</body>
+        <!-- Call to Action-->
+        <!-- <section class="content-section bg-primary text-white">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mb-4">The buttons below are impossible to resist...</h2>
+                <a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>
+                <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>
+            </div>
+        </section>
+        <!-- Map-->
+        <!-- Contacto -->
+<section class="content-sectioncontact" id="contact">
+    <div class="container px-4 px-lg-5 text-center">
+        <div class="content-section-heading">
+            <h3 class="text-secondary mb-0">Contacto</h3>
+            <h2 class="mb-5">¡Hablemos!</h2>
+        </div>
+        <p class="mb-4">Puedes contactarme por correo electrónico o visitar mi portafolio en ArtStation:</p>
+        <div>
+            <!-- Correo -->
+            <p>
+                <strong>Email:</strong> 
+                <a href="mailto:tu_correo@gmail.com">animaciondanibc@gmail.com</a>
+            </p>
+            <!-- Enlace a ArtStation -->
+            <p>
+                <strong>ArtStation:</strong> 
+                <a href="https://www.artstation.com/kr1ven" target="_blank">Mi Portafolio</a>
+            </p>
+        </div>
+    </div>
+</section>
+        <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container px-4 px-lg-5">
+                <ul class="list-inline mb-5">
+                   
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="https://www.instagram.com/kr1ven_design/"><i class="icon-social-instagram"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white" href="https://www.linkedin.com/in/daniel-borrego-cruz24/"><i class="icon-social-linkedin"></i></a>
+                    </li>
+                </ul>
+                <p class="text-muted small mb-0">Gracias por su atención</p>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="assets/js/viewer.js"></script>
+    </body>
 </html>
+                
+        
