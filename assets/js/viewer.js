@@ -77,7 +77,7 @@ const PROJECTS = {
   // tengas.
   "habitacion-cartoon": {
     title: "Subway Shelter",
-    description: "Descripción breve del trabajo",
+    description: "Use of 3DsMax and Substance Painter",
     thumb: "assets/img/Habitacion/General_Texturizado.jpg",
     planes: [
       {
