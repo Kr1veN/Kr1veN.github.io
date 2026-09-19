@@ -228,7 +228,7 @@ function createViewerController(root) {
       const action = btn.dataset.mode;
       if (action === "compare") {
         const names = Object.keys(layerByName);
-        setCompareMode(names[1], names[names.length - 1]);
+        setCompareMode(names[0], names[names.length]);
       } else if (action === "blend") {
         setBlendMode(Object.keys(layerByName));
       } else {
