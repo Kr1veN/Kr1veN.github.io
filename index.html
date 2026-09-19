@@ -176,25 +176,21 @@
                         <div class="render-viewer__hud">
                             <span class="render-viewer__title"></span>
                             <div class="render-viewer__modes">
-                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Standard</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="standard" aria-pressed="true">Modeling</button>
                                 <button type="button" class="render-viewer__mode-btn" data-mode="wireframe" aria-pressed="false">Wireframe</button>
                                 <button type="button" class="render-viewer__mode-btn" data-mode="textured" aria-pressed="false">Texturizado</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Comparar</button>
-                                <button type="button" class="render-viewer__mode-btn" data-mode="blend" aria-pressed="false">Mezclar</button>
+                                <button type="button" class="render-viewer__mode-btn" data-mode="compare" aria-pressed="false">Compare</button>
+                                
                             </div>
                         </div>
                         <div class="render-viewer__canvas" data-compare="false">
-                            <img class="render-viewer__layer" data-layer="standard" alt="Render estándar">
+                            <img class="render-viewer__layer" data-layer="standard" alt="Render modeling">
                             <img class="render-viewer__layer" data-layer="wireframe" alt="Render wireframe">
-                            <img class="render-viewer__layer" data-layer="textured" alt="Render texturizado">
+                            <img class="render-viewer__layer" data-layer="textured" alt="Render texture">
                             <div class="render-viewer__divider"></div>
                             <div class="render-viewer__handle" aria-hidden="true">⇔</div>
                         </div>
-                        <div class="render-viewer__blend">
-                            <span>clay</span>
-                            <input type="range" min="0" max="100" value="50" aria-label="Mezcla entre capas">
-                            <span>textura</span>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
