@@ -18,16 +18,26 @@
  * ocultará solo.
  */
 const PROJECTS = {
-  "guerrera-vikinga": {
-    title: "Personaje vikingo",
-    description: "Diseño de una guerrera vikinga",
-    thumb: "assets/img/seren_textured.png",
+  // AJUSTA los planos: en el ejemplo hay 2 ("General" y "Ordenador"),
+  // añade/quita bloques {label, standard, wireframe, textured} según
+  // cuántos objetos/ángulos tenga tu escena. Revisa MAYÚSCULAS/minúsculas
+  // exactas de cada archivo — GitHub Pages distingue entre ellas.
+  "habitacion-cartoon": {
+    title: "Subway Shelter",
+    description: "Interior environment",
+    thumb: "assets/img/Habitacion/General_Texturizado.jpg",
     planes: [
       {
-        label: "Plano único",
-        standard: "assets/img/seren_standard.png",
-        wireframe: "assets/img/seren_wireframe.png",
-        textured: "assets/img/seren_textured.png",
+        label: "General",
+        standard: "assets/img/Habitacion/General_Standard.jpg",
+        wireframe: "assets/img/Habitacion/General_Wireframe.jpg",
+        textured: "assets/img/Habitacion/General_Texturizado.jpg",
+      },
+      {
+        label: "Ordenador",
+        standard: "assets/img/Habitacion/Ordenador_Standard.jpg",
+        wireframe: "assets/img/Habitacion/Ordenador_Wireframe.jpg",
+        textured: "assets/img/Habitacion/Ordenador_Texturizado.jpg",
       },
     ],
   },
@@ -67,42 +77,6 @@ const PROJECTS = {
         standard: "assets/img/KahlFrente_standard.png",
         wireframe: "assets/img/KahlFrente_wireframe.png",
         textured: "assets/img/KahlFrente_textured.png",
-      },
-    ],
-  },
-
-  // EJEMPLO del proyecto con 4 planos — sustituye "proyecto-4-planos"
-  // por un id corto sin espacios, y las rutas por tus archivos reales.
-  // Puedes copiar este bloque tantas veces como proyectos multi-plano
-  // tengas.
-  "habitacion-cartoon": {
-    title: "Subway Shelter",
-    description: "Use of 3DsMax and Substance Painter",
-    thumb: "assets/img/Habitacion/General_Texturizado.jpg",
-    planes: [
-      {
-        label: "General",
-            standard: "assets/img/Habitacion/General_Modelado.jpg",
-            wireframe: "assets/img/Habitacion/General_Wireframe.jpg",
-            textured: "assets/img/Habitacion/General_Texturizado.jpg",
-      },
-      {
-        label: "Bedroom",
-          standard: "assets/img/Habitacion/Cuarto_Modelado.jpg",
-          wireframe: "assets/img/Habitacion/Cuarto_Wireframe.jpg",
-          textured: "assets/img/Habitacion/Cuarto_Texturizado.jpg",
-      },
-      {
-        label: "Tech-Zone",
-          standard: "assets/img/Habitacion/Ordenador_Modelado.jpg",
-          wireframe: "assets/img/Habitacion/Ordenador_Wireframe.jpg",
-          textured: "assets/img/Habitacion/Ordenador_Texturizado.jpg",
-      },
-      {
-        label: "Workshop",
-          standard: "assets/img/Habitacion/Taller_Modelado.jpg",
-          wireframe: "assets/img/Habitacion/Taller_Wireframe.jpg",
-          textured: "assets/img/Habitacion/Taller_Texturizado.jpg",
       },
     ],
   },
@@ -227,8 +201,15 @@ function createViewerController(root) {
       btn.setAttribute("aria-pressed", "true");
       const action = btn.dataset.mode;
       if (action === "compare") {
+        // Antes: comparaba la primera capa contra la última (standard vs
+        // textured). Ahora fuerza wireframe vs textured si ambas existen;
+        // si falta alguna, cae de vuelta al comportamiento automático.
         const names = Object.keys(layerByName);
-        setCompareMode(names[0], names[names.length]);
+        if (layerByName.wireframe && layerByName.textured) {
+          setCompareMode("wireframe", "textured");
+        } else {
+          setCompareMode(names[0], names[names.length - 1]);
+        }
       } else if (action === "blend") {
         setBlendMode(Object.keys(layerByName));
       } else {
