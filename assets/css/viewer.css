@@ -383,3 +383,50 @@
   .project-modal { padding: 0; }
   .project-modal__panel { border-radius: 0; min-height: 100vh; }
 }
+
+/* --- Vídeo dentro del modal de proyecto (p.ej. turntable) --- */
+.project-modal__video {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  border-radius: 4px;
+  background: var(--viewport-bg);
+  border: 1px solid var(--viewport-border);
+}
+
+/* --- Flechas de navegación (modo "gallery") --- */
+.project-modal__viewer-slot {
+  position: relative;
+}
+
+.project-modal__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--viewport-border);
+  background: rgba(22, 22, 26, 0.75);
+  color: var(--viewport-text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.project-modal__arrow:hover {
+  border-color: var(--accent-amber);
+  color: var(--accent-amber);
+  background: rgba(22, 22, 26, 0.92);
+}
+
+.project-modal__arrow--prev { left: 0.6rem; }
+.project-modal__arrow--next { right: 0.6rem; }
+
+/* En modo galería no hay HUD ni pestañas de plano */
+.project-modal__viewer-slot.is-gallery .render-viewer__hud,
+.project-modal.is-gallery .project-modal__planes {
+  display: none !important;
+}

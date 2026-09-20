@@ -4,16 +4,16 @@
    =================================================================== */
 
 :root {
-  --viewport-bg: #1b1b1e;
-  --viewport-grid: #29292e;
-  --viewport-panel: #232327;
-  --viewport-border: #38383e;
-  --viewport-text: #e7e5df;
-  --viewport-text-dim: #8d8b86;
+  --viewport-bg: #16161a;
+  --viewport-grid: #232328;
+  --viewport-panel: #1e1e23;
+  --viewport-border: #34343b;
+  --viewport-text: #ece8df;
+  --viewport-text-dim: #8e8b84;
   --accent-amber: #ff8a3d;
-  --accent-wire: #4dd88a;
+  --accent-wire: #5be08a;
   --font-ui: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
-  --font-display: "Sora", "Archivo", sans-serif;
+  --font-display: "Fraunces", "Georgia", serif;
 }
 
 .render-viewer {
@@ -84,7 +84,11 @@
 /* Lienzo donde viven las capas */
 .render-viewer__canvas {
   position: relative;
-  aspect-ratio: 4 / 3;
+  /* Proporción por defecto antes de que cargue la primera imagen;
+     el JS la sobreescribe con la proporción REAL de cada render en
+     cuanto carga, así nunca se recorta ni deforma un 2K. */
+  aspect-ratio: 1 / 1;
+  max-height: 78vh;
   background-image:
     linear-gradient(var(--viewport-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--viewport-grid) 1px, transparent 1px);
@@ -99,12 +103,20 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* contain, no cover: un render wireframe se puede recortar entero con
+     "cover" si su proporción no coincide exactamente con el canvas.
+     Con "contain" nunca se pierde parte de la imagen. */
+  object-fit: contain;
+  background: var(--viewport-bg);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+.render-viewer__layer.render-viewer__layer--missing {
+  display: none;
 }
 
 .render-viewer__layer.is-active {
@@ -201,4 +213,225 @@
 
 @media (prefers-reduced-motion: reduce) {
   .render-viewer__layer { transition: none; }
+}
+
+/* ===================================================================
+   Project Grid + Modal — proyectos con varios planos de cámara
+   =================================================================== */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: 1px solid var(--viewport-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--viewport-panel);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font-family: var(--font-ui);
+}
+
+.project-card__thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  /* contain, no cover: con "cover" una imagen que no sea cuadrada (como el
+     render del Mecha, más ancho que alto) se recorta y puede perder la
+     parte importante del encuadre. Con "contain" se ve completa, con
+     un pequeño margen del color de fondo a los lados si hace falta. */
+  object-fit: contain;
+  background: var(--viewport-bg);
+  display: block;
+  filter: saturate(0.85);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.project-card:hover .project-card__thumb {
+  transform: scale(1.03);
+  filter: saturate(1);
+}
+
+.project-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(to top, rgba(10, 10, 12, 0.9) 0%, rgba(10, 10, 12, 0.15) 55%, transparent 100%);
+}
+
+.project-card__title {
+  font-family: var(--font-display);
+  color: var(--viewport-text);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.project-card__meta {
+  color: var(--accent-amber);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  margin-top: 0.2rem;
+}
+
+/* --- Modal --- */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: none;
+  background: rgba(10, 10, 11, 0.92);
+  backdrop-filter: blur(3px);
+  padding: 2.2rem 1rem;
+  overflow-y: auto;
+}
+
+.project-modal.is-open {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-modal__panel {
+  width: 100%;
+  max-width: 1100px;
+  background: var(--viewport-panel);
+  border: 1px solid var(--viewport-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  border-bottom: 1px solid var(--viewport-border);
+}
+
+.project-modal__title {
+  font-family: var(--font-display);
+  color: var(--viewport-text);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.project-modal__desc {
+  font-family: var(--font-ui);
+  color: var(--viewport-text-dim);
+  font-size: 0.78rem;
+  margin-top: 0.3rem;
+}
+
+.project-modal__close {
+  appearance: none;
+  border: 1px solid var(--viewport-border);
+  background: var(--viewport-bg);
+  color: var(--viewport-text-dim);
+  border-radius: 4px;
+  width: 34px;
+  height: 34px;
+  font-family: var(--font-ui);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.project-modal__close:hover {
+  color: var(--accent-amber);
+  border-color: var(--accent-amber);
+}
+
+/* Pestañas de plano (solo se muestran si el proyecto tiene 2+ planos) */
+.project-modal__planes {
+  display: none;
+  gap: 0.4rem;
+  padding: 0.8rem 1.3rem 0;
+  flex-wrap: wrap;
+}
+
+.project-modal__planes.has-planes {
+  display: flex;
+}
+
+.project-modal__plane-btn {
+  appearance: none;
+  border: 1px solid var(--viewport-border);
+  background: var(--viewport-bg);
+  color: var(--viewport-text-dim);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.project-modal__plane-btn[aria-pressed="true"] {
+  color: var(--accent-amber);
+  border-color: var(--accent-amber);
+  background: rgba(255, 138, 61, 0.08);
+}
+
+.project-modal__viewer-slot {
+  padding: 1.3rem;
+}
+
+@media (max-width: 560px) {
+  .project-modal { padding: 0; }
+  .project-modal__panel { border-radius: 0; min-height: 100vh; }
+}
+
+/* --- Vídeo dentro del modal de proyecto (p.ej. turntable) --- */
+.project-modal__video {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  border-radius: 4px;
+  background: var(--viewport-bg);
+  border: 1px solid var(--viewport-border);
+}
+
+/* --- Flechas de navegación (modo "gallery") --- */
+.project-modal__viewer-slot {
+  position: relative;
+}
+
+.project-modal__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--viewport-border);
+  background: rgba(22, 22, 26, 0.75);
+  color: var(--viewport-text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.project-modal__arrow:hover {
+  border-color: var(--accent-amber);
+  color: var(--accent-amber);
+  background: rgba(22, 22, 26, 0.92);
+}
+
+.project-modal__arrow--prev { left: 0.6rem; }
+.project-modal__arrow--next { right: 0.6rem; }
+
+/* En modo galería no hay HUD ni pestañas de plano */
+.project-modal__viewer-slot.is-gallery .render-viewer__hud,
+.project-modal.is-gallery .project-modal__planes {
+  display: none !important;
 }

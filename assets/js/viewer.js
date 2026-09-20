@@ -24,60 +24,109 @@ const PROJECTS = {
   // exactas de cada archivo — GitHub Pages distingue entre ellas.
   "habitacion-cartoon": {
     title: "Subway Shelter",
-    description: "Interior environment",
+    description: "Interior environment made using 3DsMax for modelling, Substance Paint and Photoshop to create the textures and Arnol for the final render.",
     thumb: "assets/img/Habitacion/General_Texturizado.jpg",
     planes: [
       {
         label: "General",
-        standard: "assets/img/Habitacion/General_Standard.jpg",
+        standard: "assets/img/Habitacion/General_Modelado.jpg",
         wireframe: "assets/img/Habitacion/General_Wireframe.jpg",
         textured: "assets/img/Habitacion/General_Texturizado.jpg",
       },
       {
-        label: "Ordenador",
-        standard: "assets/img/Habitacion/Ordenador_Standard.jpg",
+        label: "Tech-zone",
+        standard: "assets/img/Habitacion/Ordenador_Modelado.jpg",
         wireframe: "assets/img/Habitacion/Ordenador_Wireframe.jpg",
         textured: "assets/img/Habitacion/Ordenador_Texturizado.jpg",
       },
-    ],
-  },
-  criatura: {
-    title: "Criatura",
-    description: "Monstruo de fantasía",
-    thumb: "assets/img/Enemigo_textured.png",
-    planes: [
       {
-        label: "Plano único",
-        standard: "assets/img/Enemigo_standard.png",
-        wireframe: "assets/img/Enemigo_wireframe.png",
-        textured: "assets/img/Enemigo_textured.png",
+        label: "Workshop",
+        standard: "assets/img/Habitacion/Taller_Modelado.jpg",
+        wireframe: "assets/img/Habitacion/Taller_Wireframe.jpg",
+        textured: "assets/img/Habitacion/Taller_Texturizado.jpg",
+      },
+      {
+        label: "Bedrooom",
+        standard: "assets/img/Habitacion/Cuarto_Modelado.jpg",
+        wireframe: "assets/img/Habitacion/Cuarto_Wireframe.jpg",
+        textured: "assets/img/Habitacion/Cuarto_Texturizado.jpg",
       },
     ],
   },
-  busto: {
-    title: "Busto",
-    description: "Busto de un señor mayor para práctica de anatomía",
-    thumb: "assets/img/busto_textured.png",
+  mecha: {
+    title: "Mecha",
+    description: "Mecha Character created in ZBrush",
+    thumb: "assets/img/RenderMecha.jpg",
     planes: [
       {
         label: "Plano único",
-        standard: "assets/img/busto_standard.png",
-        wireframe: "assets/img/busto_wireframe.png",
-        textured: "assets/img/busto_textured.png",
+        textured: "assets/img/RenderMecha.jpg",
       },
     ],
   },
-  monje: {
-    title: "Monje",
-    description: "Personaje fantasía",
-    thumb: "assets/img/KahlFrente_textured.png",
+  "radio": {
+        title: "Military Radio",
+        description: "Realistic Prop made using 3DsMax for modelling, Substance Painter for textures and Marmoset Toolbag for the final render.",
+        thumb: "assets/img/Radio/Radio_General.jpg",
+        // "gallery": solo imagen/vídeo + flechas, sin HUD ni pestañas de plano.
+        // Quita esta línea (o pon "layers") para volver al modo con toggle
+        // standard/wireframe/texturizado normal.
+        viewMode: "gallery",
+        planes: [
+            {
+                label: "General",
+                textured: "assets/img/Radio/Radio_General.jpg",
+            },
+            {
+                label: "Close-up 1",
+                textured: "assets/img/Radio/Radio_CloseUp1.jpg",
+            },
+            {
+                label: "Close-up 2",
+                textured: "assets/img/Radio/Radio_CloseUp2.jpg",
+            },
+            {
+                label: "Vídeo",
+                video: "assets/img/Radio/Radio_Video.mp4",
+            },
+        ],
+    },
+  generador: {
+    title: "Generator",
+    description: "Realistic Prop made in Maya.",
+    thumb: "assets/img/Generador/Generador_Modelado.jpg",
     planes: [
       {
         label: "Plano único",
-        standard: "assets/img/KahlFrente_standard.png",
-        wireframe: "assets/img/KahlFrente_wireframe.png",
-        textured: "assets/img/KahlFrente_textured.png",
+        standard: "assets/img/Generador/Generador_Modelado.jpg",
+        wireframe: "assets/img/Generador/Generador_Wireframe.jpg",
+        // No hay _Texturizado — el botón "Texturizado" se ocultará solo
       },
+    ],
+  },
+  "casa-cartoon": {
+    title: "Cartoon House made in 3DsMax.",
+    description: "Exterior Environment",
+    thumb: "assets/img/CasaCartoon/Casa_Cartoon_Modelado.jpg",
+    planes: [
+      {
+        label: "Plano único",
+        standard: "assets/img/CasaCartoon/Casa_Cartoon_Modelado.jpg",
+        wireframe: "assets/img/CasaCartoon/Casa_Cartoon_Wireframe.jpg",
+      },
+    ],
+  },
+  semaforo: {
+    title: "Traffic Light made in 3DsMax.",
+    description: "Realistic Prop",
+    thumb: "assets/img/Semaforo/Semaforo1.jpg",
+    // 3 renders sin capas (no son standard/wireframe/textured del mismo
+    // plano, son 3 planos/ángulos distintos) -> modo galería con flechas.
+    viewMode: "gallery",
+    planes: [
+      { label: "Render 1", textured: "assets/img/Semaforo/Semaforo1.jpg" },
+      { label: "Render 2", textured: "assets/img/Semaforo/Semaforo2.jpg" },
+      { label: "Render 3", textured: "assets/img/Semaforo/Semaforo3.jpg" },
     ],
   },
 };
@@ -286,6 +335,9 @@ function initProjectGrid() {
   const planesEl = modal.querySelector(".project-modal__planes");
   const viewerSlot = modal.querySelector(".project-modal__viewer-slot");
   const closeBtn = modal.querySelector(".project-modal__close");
+  const videoEl = modal.querySelector(".project-modal__video");
+  const prevBtn = modal.querySelector(".project-modal__arrow--prev");
+  const nextBtn = modal.querySelector(".project-modal__arrow--next");
 
   // El visor del modal se crea UNA vez y se reutiliza para todos los proyectos/planos
   const modalViewerRoot = viewerSlot.querySelector(".render-viewer");
@@ -300,23 +352,47 @@ function initProjectGrid() {
     titleEl.textContent = project.title;
     descEl.textContent = project.description || "";
 
+    const isGallery = project.viewMode === "gallery";
+    modal.classList.toggle("is-gallery", isGallery);
+    viewerSlot.classList.toggle("is-gallery", isGallery);
+    // En modo galería no se construyen pestañas de plano (las flechas las sustituyen)
+    prevBtn.style.display = isGallery && project.planes.length > 1 ? "" : "none";
+    nextBtn.style.display = isGallery && project.planes.length > 1 ? "" : "none";
+
     planesEl.innerHTML = "";
-    const showTabs = project.planes.length > 1;
+    const showTabs = !isGallery && project.planes.length > 1;
     planesEl.classList.toggle("has-planes", showTabs);
 
     function selectPlane(index) {
       const plane = project.planes[index];
-      modalController.setLayerSources({
-        standard: plane.standard,
-        wireframe: plane.wireframe,
-        textured: plane.textured,
-      });
+
+      if (plane.video) {
+        // Plano de vídeo: oculta el visor de imagen, muestra <video>
+        modalViewerRoot.style.display = "none";
+        videoEl.style.display = "";
+        videoEl.src = plane.video;
+        videoEl.load();
+      } else {
+        // Plano de imagen: detiene y oculta el vídeo, muestra el visor
+        videoEl.pause();
+        videoEl.removeAttribute("src");
+        videoEl.load();
+        videoEl.style.display = "none";
+        modalViewerRoot.style.display = "";
+        modalController.setLayerSources({
+          standard: plane.standard,
+          wireframe: plane.wireframe,
+          textured: plane.textured,
+        });
+      }
+
       planesEl.querySelectorAll(".project-modal__plane-btn").forEach((b, i) => {
         b.setAttribute("aria-pressed", i === index ? "true" : "false");
       });
     }
 
     project.planes.forEach((plane, index) => {
+      if (isGallery) return; // en modo galería no hay pestañas, solo flechas
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "project-modal__plane-btn";
@@ -325,6 +401,16 @@ function initProjectGrid() {
       btn.addEventListener("click", () => selectPlane(index));
       planesEl.appendChild(btn);
     });
+
+    let currentIndex = 0;
+    prevBtn.onclick = () => {
+      currentIndex = (currentIndex - 1 + project.planes.length) % project.planes.length;
+      selectPlane(currentIndex);
+    };
+    nextBtn.onclick = () => {
+      currentIndex = (currentIndex + 1) % project.planes.length;
+      selectPlane(currentIndex);
+    };
 
     selectPlane(0);
     modal.classList.add("is-open");
@@ -335,6 +421,7 @@ function initProjectGrid() {
   function closeModal() {
     modal.classList.remove("is-open");
     document.body.style.overflow = "";
+    videoEl.pause();
   }
 
   grid.querySelectorAll(".project-card").forEach((card) => {
