@@ -314,7 +314,12 @@ function createViewerController(root) {
       });
       modeButtons.forEach((b) => b.setAttribute("aria-pressed", "false"));
       setModeButtonsVisibility();
-      const firstAvailable = Object.keys(layerByName)[0];
+      // Preferimos mostrar "texturizado" primero si existe, en vez de
+      // depender de qué orden se insertaron las claves (que antes daba
+      // resultados poco predecibles según el proyecto).
+      const preferredOrder = ["textured", "standard", "wireframe"];
+      const firstAvailable =
+        preferredOrder.find((n) => layerByName[n]) || Object.keys(layerByName)[0];
       if (firstAvailable) {
         setSingleMode(firstAvailable);
         const btn = root.querySelector(`[data-mode="${firstAvailable}"]`);
