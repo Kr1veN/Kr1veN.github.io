@@ -36,7 +36,7 @@ const PROJECTS = {
       {
         label: "Tech-zone",
         standard: "assets/img/Habitacion/Ordenador_Modelado.jpg",
-        wireframe: "assets/img/Habitacion/Ordenador_Wireframe.jpg",
+          wireframe: "assets/img/Habitacion/Ordenador_Wireframe.jpg",
         textured: "assets/img/Habitacion/Ordenador_Texturizado.jpg",
       },
       {
