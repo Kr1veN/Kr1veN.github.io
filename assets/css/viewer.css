@@ -89,6 +89,14 @@
      cuanto carga, así nunca se recorta ni deforma un 2K. */
   aspect-ratio: 1 / 1;
   max-height: 78vh;
+  /* Cuando la proporción + max-height obligan al canvas a ser más
+     estrecho que su contenedor (p.ej. una imagen cuadrada en un modal
+     ancho pero de poca altura de viewport), sin este margin quedaba
+     pegado al borde izquierdo en vez de centrado. */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-image:
     linear-gradient(var(--viewport-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--viewport-grid) 1px, transparent 1px);
@@ -107,6 +115,7 @@
      "cover" si su proporción no coincide exactamente con el canvas.
      Con "contain" nunca se pierde parte de la imagen. */
   object-fit: contain;
+  object-position: center center;
   background: var(--viewport-bg);
   opacity: 0;
   pointer-events: none;

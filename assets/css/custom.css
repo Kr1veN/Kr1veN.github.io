@@ -59,7 +59,17 @@ body {
 
 /* --- Header / hero --- */
 .masthead {
-  background: radial-gradient(ellipse at top, var(--bg-alt), var(--bg) 70%);
+  /* Para poner una imagen de fondo: sustituye la ruta de abajo por la tuya
+     (por ejemplo assets/img/hero-bg.jpg). El gradiente oscuro que va ENCIMA
+     de la imagen es un overlay para que tu nombre siga siendo legible —
+     ajusta las opacidades (los valores 0.55/0.85) si lo quieres más o
+     menos oscuro. Si quitas background-image, vuelve al fondo liso de antes. */
+  background-image:
+    radial-gradient(ellipse at top, rgba(28, 28, 33, 0.55), rgba(22, 22, 26, 0.88) 70%),
+    url("assets/img/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 92vh;
 }
 
@@ -107,18 +117,15 @@ body {
   font-weight: 600;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   color: var(--ink);
-  text-align: left;
+  text-align: center;
 }
 
 #about .lead {
   font-family: var(--font-body);
   color: var(--ink-dim);
-  text-align: left;
+  text-align: center;
   font-size: 1.1rem;
-  max-width: 46ch;
 }
-
-#about .col-lg-10 { text-align: left !important; }
 
 /* --- Callout / foto de perfil --- */
 .callout {

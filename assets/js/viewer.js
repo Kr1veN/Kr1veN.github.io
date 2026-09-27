@@ -166,6 +166,12 @@ function createViewerController(root) {
         btn.style.display = layerByName[m] ? "" : "none";
       }
     });
+    // Si solo hay 1 capa (p.ej. un proyecto con una única imagen), no tiene
+    // sentido mostrar un botón único ni el HUD entero — se oculta del todo.
+    const hud = root.querySelector(".render-viewer__hud");
+    if (hud) {
+      hud.style.display = Object.keys(layerByName).length <= 1 ? "none" : "";
+    }
   }
 
   layers.forEach((img) => {
